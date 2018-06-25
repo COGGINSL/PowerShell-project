@@ -1,0 +1,10 @@
+write-host "current user:" $env:USERNAME
+write-host "computer name:" $env:COMPUTERNAME
+write-host "operating system:"
+(get-ciminstance -ClassName win32_operatingsystem).Caption
+write-host "ip address:"
+Get-NetIPAddress -AddressFamily IPv4 |
+select-object interfacealias,ipaddress |
+Out-host 
+write-host "last 5 powershell commands:"
+get-history -count 5
