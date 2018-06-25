@@ -5,8 +5,8 @@ Add-Type -AssemblyName System.Speech
 [int]$number = Get-Random -Minimum 1 -Maximum 100
  
 $voice = New-Object System.Speech.Synthesis.SpeechSynthesizer
-$voice.Speak("Ahoy matey! I'm the Dreaded Pirate Robbins, and I have a secret!
-              It's a number between 1 and 100. I'll give you 7 tries to guess it.")
+$voice.Speak("Ahoy matey! I'm the One the call Captain Jack Sparrow, and I have a secret!
+              It's a number between 1 and 100. I'll give you 10 tries to guess it.")
  
 do {
     $voice.SpeakAsync("What's your guess?") | Out-Null
@@ -24,20 +24,20 @@ do {
     }
  
     if ($guess -lt $number) {
-        $voice.Speak("Too low, yee scurry dog!")
+        $voice.Speak("Too low, more rum!")
     }
     elseif ($guess -gt $number) {
-        $voice.Speak("Too high, yee land lubber!")
+        $voice.Speak("Too high, leave me some rum!")
     }
  
     $attempt += 1
 }
-until ($guess -eq $number -or $attempt -eq 7)
+until ($guess -eq $number -or $attempt -eq 10)
  
 if ($guess -eq $number) {
-    $voice.Speak("Avast! Yee guessed my secret number, yee did!")
+    $voice.Speak("Avast! Yee guessed my secret number, lets drink all the rum!")
 }
 else {
-    $voice.Speak("Yee out of guesses! Better luck next time, yee matey!
+    $voice.Speak("Yee out of guesses! Walk the plank, you skally wag!
                   My secret number was $number")
 }
